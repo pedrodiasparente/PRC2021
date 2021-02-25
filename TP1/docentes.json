@@ -1,0 +1,42 @@
+[
+    {
+      "_id": "jcr",
+      "nome": "José Carlos Ramalho",
+      "type": [
+        "Professor"
+      ],
+      "ensina": [
+        "PRC2021"
+      ]
+    },
+    {
+      "_id": "jj",
+      "nome": "José João",
+      "type": [
+        "Professor"
+      ],
+      "ensina": [
+        "SPLN2021"
+      ]
+    },
+    {
+      "_id": "mfr",
+      "nome": "Miguel Francisco Almeida Pereira Rocha",
+      "type": [
+        "Professor"
+      ],
+      "ensina": [
+        "AA22021"
+      ]
+    },
+    {
+      "_id": "jop",
+      "nome": "José Orlando Roque Nascimento Pereira",
+      "type": [
+        "Professor"
+      ],
+      "ensina": [
+        "GGCD2021"
+      ]
+    }
+  ]
