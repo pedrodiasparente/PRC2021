@@ -16,13 +16,13 @@
 <http://www.di.uminho.pt/prc2021/uc#ensina> rdf:type owl:ObjectProperty ;
                                             owl:inverseOf <http://www.di.uminho.pt/prc2021/uc#éEnsinadaPor> ;
                                             rdfs:domain <http://www.di.uminho.pt/prc2021/uc#Professor> ;
-                                            rdfs:range <http://www.di.uminho.pt/prc2021/uc#UC> .
+                                            rdfs:range <http://www.di.uminho.pt/prc2021/uc#UnidadeCurricular> .
 
 
 ###  http://www.di.uminho.pt/prc2021/uc#frequenta
 <http://www.di.uminho.pt/prc2021/uc#frequenta> rdf:type owl:ObjectProperty ;
                                                rdfs:domain <http://www.di.uminho.pt/prc2021/uc#Aluno> ;
-                                               rdfs:range <http://www.di.uminho.pt/prc2021/uc#UC> .
+                                               rdfs:range <http://www.di.uminho.pt/prc2021/uc#UnidadeCurricular> .
 
 
 ###  http://www.di.uminho.pt/prc2021/uc#éEnsinadaPor
@@ -53,7 +53,7 @@
 <http://www.di.uminho.pt/prc2021/uc#Aluno> rdf:type owl:Class ;
                                            rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                              owl:onProperty <http://www.di.uminho.pt/prc2021/uc#frequenta> ;
-                                                             owl:someValuesFrom <http://www.di.uminho.pt/prc2021/uc#UC>
+                                                             owl:someValuesFrom <http://www.di.uminho.pt/prc2021/uc#UnidadeCurricular>
                                                            ] .
 
 
@@ -61,12 +61,12 @@
 <http://www.di.uminho.pt/prc2021/uc#Professor> rdf:type owl:Class ;
                                                rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                                  owl:onProperty <http://www.di.uminho.pt/prc2021/uc#ensina> ;
-                                                                 owl:someValuesFrom <http://www.di.uminho.pt/prc2021/uc#UC>
+                                                                 owl:someValuesFrom <http://www.di.uminho.pt/prc2021/uc#UnidadeCurricular>
                                                                ] .
 
 
-###  http://www.di.uminho.pt/prc2021/uc#UC
-<http://www.di.uminho.pt/prc2021/uc#UC> rdf:type owl:Class .
+###  http://www.di.uminho.pt/prc2021/uc#UnidadeCurricular
+<http://www.di.uminho.pt/prc2021/uc#UnidadeCurricular> rdf:type owl:Class .
 
 
 #################################################################
