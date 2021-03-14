@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Lista de Repos
+  ul
+  each val in data
+    a(href=val.id)
+      h3= val.id
+    p= val.title

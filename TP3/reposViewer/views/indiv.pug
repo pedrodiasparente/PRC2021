@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Lista de Caraterísticas do Indivíduo
+  table
+    tr
+        th Predicado
+        th Objecto
+    each val in data
+        tr
+            td= val.p
+            td= val.o

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Lista de Indivíduos
+  ul
+  each val in indivs
+    a(href='http://localhost:3000/' + val.repo + '/indivs/' + val.data)
+      h3= val.data

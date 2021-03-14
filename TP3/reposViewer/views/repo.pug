@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Lista de Classes
+  ul
+  each val in data
+    a(href=val.repo + '/' + val.data)
+      h3= val.data
