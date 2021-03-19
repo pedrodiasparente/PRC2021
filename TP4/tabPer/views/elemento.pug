@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Lista de Caraterísticas do Elemento
+  table
+    tr
+        th Predicado
+        th Objecto
+    each val in data
+        if(val.o != undefined)
+            tr
+                td= val.p
+                td= val.o
