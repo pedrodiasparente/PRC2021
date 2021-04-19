@@ -1,0 +1,43 @@
+1-
+PREFIX : <http://www.di.uminho.pt/prc2021/afericao#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select * where { 
+	{?r rdf:type :fornecedor .}
+    	UNION
+    {?r rdf:type :fracao .}
+}
+
+2-
+PREFIX : <http://www.di.uminho.pt/prc2021/afericao#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select * where {
+    ?fracao rdf:type :fracao
+    MINUS {?fracao :pagou :abr}
+}
+
+3-
+PREFIX : <http://www.di.uminho.pt/prc2021/afericao#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select ?entidade (SUM(?valor) AS ?totalValor) where {
+    ?despesa rdf:type :despesa.
+    ?despesa :valor ?valor.
+    ?despesa :pagador ?entidade
+} GROUP BY ?entidade
+
+4-
+PREFIX : <http://www.di.uminho.pt/prc2021/afericao#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select (SUM(?totalValor) as ?total) where {
+    select ?fracao (SUM(?valor) as ?totalValor) where {
+    ?fracao :pagou ?mes.
+    ?fracao :mensalidade ?valor
+    } GROUP BY ?fracao
+}
+
+5-
+PREFIX : <http://www.di.uminho.pt/prc2021/afericao#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select ?fracao (SUM(?valor) as ?totalValor) where {
+    ?fracao :pagou ?mes.
+    ?fracao :mensalidade ?valor
+} GROUP BY ?fracao
