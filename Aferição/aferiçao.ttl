@@ -83,14 +83,9 @@
 :EDP rdf:type owl:NamedIndividual ,
               :fornecedor .
 
-
-###  http://www.di.uminho.pt/prc2021/afericao#KONE
-:KONE rdf:type owl:NamedIndividual ,
-               :fornecedor .
-
-
 ###  http://www.di.uminho.pt/prc2021/afericao#Kone
-:Kone rdf:type owl:NamedIndividual .
+:Kone rdf:type owl:NamedIndividual ,
+               :fornecedor .
 
 
 ###  http://www.di.uminho.pt/prc2021/afericao#Limpeza
