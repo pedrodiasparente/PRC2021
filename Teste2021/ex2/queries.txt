@@ -1,0 +1,11 @@
+CONSTRUCT { 
+      ?s f:temDescendentes ?o .
+  } WHERE {
+      ?s f:eProgenitorDe+ ?o.
+  }
+
+INSERT { 
+      ?s f:temDescendentes ?o .
+  } WHERE {
+      ?s f:eProgenitorDe+ ?o.
+  }
