@@ -1,0 +1,71 @@
+PREFIX : <http://prc.di.uminho.pt/2021/myfamily#>
+CONSTRUCT { 
+	?s :temIrmao ?o .
+} WHERE {
+    ?s :temPai ?l.
+    ?o :temPai ?l.
+    filter (?o != ?s)
+}
+
+PREFIX : <http://prc.di.uminho.pt/2021/myfamily#>
+CONSTRUCT { 
+	?s :temBisavo ?o .
+} WHERE {
+    ?s :temProgenitor ?l.
+    ?l :temProgenitor ?r.
+    ?r :temProgenitor ?o
+}
+
+PREFIX : <http://prc.di.uminho.pt/2021/myfamily#>
+CONSTRUCT { 
+	?s :temDescendentes ?o .
+} WHERE {
+    ?s :eProgenitorDe+ ?o.
+}
+
+PREFIX : <http://prc.di.uminho.pt/2021/myfamily#>
+CONSTRUCT { 
+	?s :temPrimo ?o .
+} WHERE {
+    ?s :temProgenitor ?l.
+    ?l :temPai ?r.
+    ?f :temPai ?r.
+    ?o :temProgenitor ?f
+    filter (?f != ?l)
+}
+
+PREFIX : <http://prc.di.uminho.pt/2021/myfamily#>
+CONSTRUCT { 
+	?s :sexo 'Feminino' .
+    ?r :sexo 'Masculino' .
+} WHERE {
+    {?f :temMae ?s}
+    UNION
+    {?l :temPai ?r}
+}
+
+PREFIX : <http://prc.di.uminho.pt/2021/myfamily#>
+CONSTRUCT { 
+	?s :temRelacaoCom :José_Carlos_Leite_Ramalho_1967 .
+} WHERE {
+    {?s :eProgenitorDe+ :José_Carlos_Leite_Ramalho_1967 .}
+    UNION
+    {
+        :José_Carlos_Leite_Ramalho_1967 :temProgenitor ?l.
+        ?l :temPai ?r.
+        ?f :temPai ?r.
+        ?s :temProgenitor ?f
+        filter (?f != ?l)
+    }
+    UNION
+    {
+        { ?s :temProgenitor+ :José_Carlos_Leite_Ramalho_1967 .}
+    }
+    UNION
+    {
+        :José_Carlos_Leite_Ramalho_1967 :temProgenitor ?l.
+        ?l :temPai ?r.
+        ?s :temPai ?r.
+        filter (?s != ?l)
+    }
+}
