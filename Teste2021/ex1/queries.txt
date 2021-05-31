@@ -1,0 +1,35 @@
+PREFIX : <http://www.di.uminho.pt/prc2021/teste2021/ex1#>
+select (COUNT(?s) as ?numTestes) where { 
+	?s ?p :Atleta .
+}
+
+PREFIX : <http://www.di.uminho.pt/prc2021/teste2021/ex1#>
+select (count(?s) as ?numValido) where { 
+	?s :resultado ?o .
+    filter (?o = true)
+}
+
+PREFIX : <http://www.di.uminho.pt/prc2021/teste2021/ex1#>
+select ?g (count(?s) as ?distribuicao) where { 
+	?s :genero ?g .
+} group by ?g
+
+PREFIX : <http://www.di.uminho.pt/prc2021/teste2021/ex1#>
+select ?m (count(?s) as ?distribuicao) where { 
+	?s :praticaModalidade ?m .
+} group by ?m
+
+PREFIX : <http://www.di.uminho.pt/prc2021/teste2021/ex1#>
+select (COUNT(?s) as ?numAtletas) where { 
+	?s :temClube :GDGoma .
+    ?s :federado ?f
+    filter(?f = true)
+}
+
+
+PREFIX : <http://www.di.uminho.pt/prc2021/teste2021/ex1#>
+select (COUNT(?s) as ?numAtletas) where { 
+	?s :genero ?g .
+    filter(?g = 'F')
+    ?s :praticaModalidade :Triatlo
+}
