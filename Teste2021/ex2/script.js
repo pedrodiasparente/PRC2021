@@ -1,4 +1,5 @@
 var axios = require('axios')
+var gdb = require('./utils/graphdb')
 
 var prefixes = `
 
@@ -27,29 +28,20 @@ var prefixes = `
   }
   `
 
-  var query2 = `
-  INSERT { 
-      ?s f:temDescendentes ?o .
-  } WHERE {
-      ?s f:eProgenitorDe+ ?o.
-  }
-  `
-
   var encoded = encodeURIComponent(prefixes + query)
   axios.get(getLink + encoded)
-      .then(dados => {
-          props = dados.data.split('\n')
-          props.forEach(p => {
-              console.log(p.split('#')[1].split('>')[0] +  ' ' + p.split('#')[2].split('>')[0] +  ' ' + p.split('#')[3].split('>')[0])
-          })
+        .then(async dados => {
+            props = dados.data.split('\n')
+            props.forEach(p => {
+                if (p =! '\n')
+                console.log(p.split('#')[1].split('>')[0] +  ' ' + p.split('#')[2].split('>')[0] +  ' ' + p.split('#')[3].split('>')[0])
+            })
+
+            var query2 = `INSERT data { 
+                ${dados.data}
+            }
+              `
+            var result = await gdb.execTransaction(query2)
           
       })    
       .catch(erro => console.log(erro))
-
-    var encoded = encodeURIComponent(prefixes + query2)
-    axios.get(getLink + encoded)
-    .then(dados => {
-        console.log(dados)
-        
-    })    
-    .catch(erro => console.log(erro))
